@@ -70,12 +70,12 @@ void setup(){
   qtr.setTypeAnalog();
   uint8_t sensorPins[]={A0,A1,A2,A3,A4,A5,A6,A7};
   qtr.setSensorPins(sensorPins, SensorCount);
-  digitalWrite (LED_CAL, LOW);
-  while(digitalRead(BOTTOM)){}
+  while(!digitalRead(BOTTOM)){}
+  digitalWrite (LED_CAL, HIGH);
   for (uint16_t i = 0; i < 400; i++){
     qtr.calibrate();
   }
-  digitalWrite(LED_CAL, HIGH);
+  digitalWrite(LED_CAL, LOW);
 }
 
 void loop()
